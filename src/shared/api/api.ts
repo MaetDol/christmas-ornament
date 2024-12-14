@@ -1,9 +1,9 @@
 class API {
-  private async request(url: string, options: RequestInit) {
-    return fetch(url, options).then(this.handleResponse);
+  private async request<T>(url: string, options: RequestInit) {
+    return fetch(url, options).then(this.handleResponse<T>);
   }
 
-  private async handleResponse(res: Response) {
+  private async handleResponse<T>(res: Response): Promise<T | string> {
     if (!res.ok) {
       throw res;
     }
@@ -20,15 +20,15 @@ class API {
     return res.text();
   }
 
-  public get(url: string, options?: RequestInit) {
-    return this.request(url, {
+  public get<T>(url: string, options?: RequestInit) {
+    return this.request<T>(url, {
       ...options,
       method: 'GET',
     });
   }
 
-  public post(url: string, options: RequestInit) {
-    return this.request(url, {
+  public post<T>(url: string, options: RequestInit) {
+    return this.request<T>(url, {
       ...options,
       method: 'POST',
     });
