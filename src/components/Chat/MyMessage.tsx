@@ -10,7 +10,7 @@ export function MyMessage({ content }: Props) {
           <li
             key={index}
             className="rounded py-2 px-3 shadow-drop-1 
-            first:rounded-t-lg last:rounded-b-lg
+            first:rounded-t-lg last:rounded-b-lg whitespace-pre-line
             text-white bg-lime-800"
           >
             {message}
