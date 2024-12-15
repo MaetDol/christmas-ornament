@@ -41,10 +41,11 @@ export function useConversation() {
     nextChat();
   };
 
-  const [disableInput, setDisableInput] = useState(false);
+  const [disableInput, setDisableInput] = useState(true);
 
   const submit = async (input: string) => {
     if (disableInput) return;
+    setDisableInput(true);
     const question = QUESTIONS[questionIdx];
     if (!question.id) return;
 
@@ -58,7 +59,6 @@ export function useConversation() {
   useEffect(() => {
     const question = QUESTIONS[questionIdx];
 
-    setDisableInput(true);
     const id = window.setTimeout(() => {
       addConversation(question.me, false);
 
