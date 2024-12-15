@@ -32,7 +32,7 @@ export function ChatInput({ onSubmit }: Props) {
       <button
         className="bg-slate-50 shrink-0 w-10 h-10 rounded-full
           shadow-[inset_2px_-2px_4px_rgba(0,0,0,0.1)]
-          flex items-center justify-center font-[18px]
+          flex items-center justify-center
         "
         onClick={submit}
       >
