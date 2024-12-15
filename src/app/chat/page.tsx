@@ -2,10 +2,77 @@
 
 import { Chat } from '@/components/Chat';
 import { ChatInput } from '@/components/ChatInput';
+import { chatApi } from '@/shared/api/chatApi';
+import { QUESTIONS } from '@/shared/constants/questions';
+import { ChatResponse } from '@/shared/types/chatApi';
 import BackgroundImage from '@/static/images/bg.jpg';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
+
+type Conversation = { role: string; content: string[] };
 
 export default function Page() {
+  const [questionIdx, setQuestionIdx] = useState(0);
+  const [res, setRes] = useState<ChatResponse[]>([]);
+
+  const [conversation, setConversation] = useState<Conversation[]>([]);
+
+  const addConversation = (chat: string, isUser: boolean) => {
+    const newChat = { role: isUser ? 'user' : 'partner', content: [chat] };
+
+    setConversation((prev) => {
+      const last = prev.at(-1);
+      if (last?.role === newChat.role) {
+        newChat.content = [...last.content, chat];
+        return [...prev.slice(0, -1), newChat];
+      }
+
+      return [...prev, newChat];
+    });
+  };
+
+  const nextChat = () => {
+    if (questionIdx >= QUESTIONS.length - 1) return;
+    setQuestionIdx((prev) => prev + 1);
+  };
+
+  const response = (res: string) => {
+    addConversation(res, true);
+
+    const question = QUESTIONS[questionIdx];
+    if (question.response) {
+      addConversation(question.response, false);
+    }
+
+    nextChat();
+  };
+
+  const submit = async (input: string) => {
+    const question = QUESTIONS[questionIdx];
+    if (!question.id) return;
+
+    response(input);
+
+    chatApi.chat(question.id, input).then((res) => {
+      setRes((prev) => [...prev, res]);
+    });
+  };
+
+  useEffect(() => {
+    const question = QUESTIONS[questionIdx];
+
+    const id = window.setTimeout(() => {
+      addConversation(question.me, false);
+
+      if (question.isQuestion) return;
+      nextChat();
+    }, 600 + question.me.length * 50);
+
+    return () => {
+      window.clearTimeout(id);
+    };
+  }, [questionIdx]);
+
   return (
     <main className=" w-screen h-full">
       <Image
@@ -18,22 +85,10 @@ export default function Page() {
 
       <section className="flex flex-col h-full relative ">
         {/* 채팅영역 */}
-        <Chat
-          messages={[
-            {
-              role: 'user',
-              content: ['안녕하세요. 저는 봇입니다.', '해윙해윙'],
-            },
-            { role: 'partner', content: ['안녕하세요. 반가워요.', '해윙해윙'] },
-            { role: 'user', content: ['오늘 날씨가 어떤가요?'] },
-            { role: 'partner', content: ['오늘 날씨는 맑아요.'] },
-            { role: 'user', content: ['오늘은 뭐할까요?'] },
-            { role: 'partner', content: ['오늘은 쉬는 날이에요.'] },
-          ]}
-        />
+        <Chat messages={conversation} />
 
         {/* 입력 영역 */}
-        <ChatInput />
+        <ChatInput onSubmit={submit} />
       </section>
     </main>
   );
