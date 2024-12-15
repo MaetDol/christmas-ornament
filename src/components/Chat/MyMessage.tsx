@@ -4,7 +4,7 @@ interface Props {
 
 export function MyMessage({ content }: Props) {
   return (
-    <li className="flex gap-2 justify-end">
+    <li className="flex gap-2 justify-end break-words ml-4">
       <ol className="text-[16px] flex flex-col gap-2 items-end">
         {content.map((message, index) => (
           <li
