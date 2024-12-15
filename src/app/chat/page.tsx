@@ -47,7 +47,10 @@ export default function Page() {
     nextChat();
   };
 
+  const [disableInput, setDisableInput] = useState(false);
+
   const submit = async (input: string) => {
+    if (disableInput) return;
     const question = QUESTIONS[questionIdx];
     if (!question.id) return;
 
@@ -61,10 +64,14 @@ export default function Page() {
   useEffect(() => {
     const question = QUESTIONS[questionIdx];
 
+    setDisableInput(true);
     const id = window.setTimeout(() => {
       addConversation(question.me, false);
 
-      if (question.isQuestion) return;
+      if (question.isQuestion) {
+        setDisableInput(false);
+        return;
+      }
       nextChat();
     }, 600 + question.me.length * 50);
 
@@ -83,12 +90,16 @@ export default function Page() {
         alt="Background image"
       />
 
-      <section className="flex flex-col h-full relative ">
-        {/* 채팅영역 */}
+      <section className="flex flex-col h-full relative overflow-hidden">
         <Chat messages={conversation} />
 
-        {/* 입력 영역 */}
-        <ChatInput onSubmit={submit} />
+        <div
+          className={`ease-out transition-transform ${
+            disableInput ? 'translate-y-full' : 'translate-y-0'
+          }`}
+        >
+          <ChatInput onSubmit={submit} />
+        </div>
       </section>
     </main>
   );
