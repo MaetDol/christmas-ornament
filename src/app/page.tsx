@@ -1,62 +1,12 @@
 'use client';
 
-import { chatApi } from '@/shared/api/chatApi';
 import { QUESTIONS } from '@/shared/constants/questions';
 import { ChatResponse } from '@/shared/types/chatApi';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function Home() {
-  const [input, setInput] = useState('');
-  const [questionIdx, setQuestionIdx] = useState(0);
-  const [res, setRes] = useState<ChatResponse[]>([]);
-
-  const [conversation, setConversation] = useState<string[]>([]);
-  const addConversation = (chat: string) => {
-    setConversation((prev) => [...prev, chat]);
-  };
-  const nextChat = () => {
-    if (questionIdx >= QUESTIONS.length - 1) return;
-    setQuestionIdx((prev) => prev + 1);
-  };
-  const response = (res: string) => {
-    addConversation(res);
-
-    const question = QUESTIONS[questionIdx];
-    if (question.response) {
-      addConversation(question.response);
-    }
-
-    nextChat();
-  };
-
-  const submit = async () => {
-    const question = QUESTIONS[questionIdx];
-    if (!question.id) return;
-    if (!input) return;
-
-    setInput('');
-    response(input);
-
-    chatApi.chat(question.id, input).then((res) => {
-      setRes((prev) => [...prev, res]);
-    });
-  };
-  console.log(res);
-
-  useEffect(() => {
-    const question = QUESTIONS[questionIdx];
-
-    const id = window.setTimeout(() => {
-      addConversation(question.me);
-
-      if (question.isQuestion) return;
-      nextChat();
-    }, 600 + question.me.length * 50);
-
-    return () => {
-      window.clearTimeout(id);
-    };
-  }, [questionIdx]);
+  const [questionIdx] = useState(0);
+  const [res] = useState<ChatResponse[]>([]);
 
   const result = res
     .map(({ EorI, SorN, TorF, JorP }) => {
@@ -142,18 +92,6 @@ export default function Home() {
           : getScore(result.P, result.J).toFixed(1)}{' '}
         %
       </div>
-
-      <hr />
-      {conversation.map((text, idx) => (
-        <div key={idx}>{text}</div>
-      ))}
-      <hr />
-      <input
-        placeholder="enter.."
-        onChange={(e) => setInput(e.target.value)}
-        value={input}
-      />
-      <button onClick={submit}>전송</button>
     </div>
   );
 }
