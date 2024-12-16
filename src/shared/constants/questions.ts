@@ -31,7 +31,7 @@ export const QUESTIONS: Question[] = [
     id: 2,
     me: '맞아! 캐롤도 빠질 수 없지. 나는 매번 듣던걸 들어.\n너는 어때? 새로 나오는 것도 찾아듣는 편이야?',
     isQuestion: true,
-    response: '음음. 각자 취향은 다 다르니까~ 그래도 캐롤이란 점에서 좋은거지!',
+    response: '음음. 캐롤이란 점에서 좋은거지!',
   },
   // 3
   {
