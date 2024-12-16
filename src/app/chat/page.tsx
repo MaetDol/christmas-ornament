@@ -10,7 +10,7 @@ export default function Page() {
   const { conversation, submit, disableInput } = useConversation();
 
   return (
-    <main className=" w-screen h-full">
+    <main className=" w-full h-full">
       <Image
         className="w-screen h-full object-cover object-center opacity-60 absolute"
         width={0}

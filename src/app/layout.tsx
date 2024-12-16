@@ -38,9 +38,11 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${ownglyph.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${ownglyph.variable} antialiased bg-slate-200`}
       >
-        {children}
+        <div className="max-w-[480px] relative h-full m-auto shadow-drop-1">
+          {children}
+        </div>
       </body>
     </html>
   );
