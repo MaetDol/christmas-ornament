@@ -7,7 +7,7 @@ import BackgroundImage from '@/static/images/bg.jpg';
 import Image from 'next/image';
 
 export default function Page() {
-  const { conversation, submit, disableInput } = useConversation();
+  const { conversation, submit, disableInput, isEnd } = useConversation();
 
   return (
     <main className=" w-full h-full">
@@ -24,7 +24,7 @@ export default function Page() {
 
         <div
           className={`ease-out transition-transform ${
-            disableInput ? 'translate-y-full' : 'translate-y-0'
+            disableInput || isEnd ? 'translate-y-full' : 'translate-y-0'
           }`}
         >
           <ChatInput onSubmit={submit} />

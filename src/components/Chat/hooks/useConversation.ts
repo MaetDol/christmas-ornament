@@ -79,5 +79,6 @@ export function useConversation() {
     submit,
     res,
     disableInput,
+    isEnd: questionIdx >= QUESTIONS.length - 1,
   };
 }
