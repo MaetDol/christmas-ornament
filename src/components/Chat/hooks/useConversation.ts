@@ -1,7 +1,7 @@
-import { chatApi } from '@/shared/api/chatApi';
-import { QUESTIONS } from '@/shared/constants/questions';
-import { ChatResponse } from '@/shared/types/chatApi';
-import { useEffect, useState } from 'react';
+import { chatApi } from "@/shared/api/chatApi";
+import { QUESTIONS } from "@/shared/constants/questions";
+import { ChatResponse } from "@/shared/types/chatApi";
+import { useEffect, useState } from "react";
 
 type Conversation = { role: string; content: string[] };
 
@@ -12,7 +12,7 @@ export function useConversation() {
   const [conversation, setConversation] = useState<Conversation[]>([]);
 
   const addConversation = (chat: string, isUser: boolean) => {
-    const newChat = { role: isUser ? 'user' : 'partner', content: [chat] };
+    const newChat = { role: isUser ? "user" : "partner", content: [chat] };
 
     setConversation((prev) => {
       const last = prev.at(-1);
@@ -80,5 +80,7 @@ export function useConversation() {
     res,
     disableInput,
     isEnd: questionIdx >= QUESTIONS.length - 1,
+
+    questionIdx,
   };
 }

@@ -1,13 +1,15 @@
-'use client';
+"use client";
 
-import { Chat } from '@/components/Chat';
-import { useConversation } from '@/components/Chat/hooks/useConversation';
-import { ChatInput } from '@/components/ChatInput';
-import BackgroundImage from '@/static/images/bg.jpg';
-import Image from 'next/image';
+import { Chat } from "@/components/Chat";
+import { useConversation } from "@/components/Chat/hooks/useConversation";
+import { ChatInput } from "@/components/ChatInput";
+import { Score } from "@/components/Score";
+import BackgroundImage from "@/static/images/bg.jpg";
+import Image from "next/image";
 
 export default function Page() {
-  const { conversation, submit, disableInput, isEnd } = useConversation();
+  const { conversation, submit, disableInput, isEnd, res, questionIdx } =
+    useConversation();
 
   return (
     <main className=" w-full h-full">
@@ -24,9 +26,13 @@ export default function Page() {
 
         <div
           className={`ease-out transition-transform ${
-            disableInput || isEnd ? 'translate-y-full' : 'translate-y-0'
+            disableInput || isEnd ? "translate-y-full" : "translate-y-0"
           }`}
         >
+          <div className="py-16">
+            <Score questionIdx={questionIdx} res={res} />
+          </div>
+
           <ChatInput onSubmit={submit} />
         </div>
       </section>
