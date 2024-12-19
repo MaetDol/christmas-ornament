@@ -2,12 +2,13 @@
 
 import { QUESTIONS } from "@/shared/constants/questions";
 import { ChatResponse } from "@/shared/types/chatApi";
-import { useState } from "react";
 
-export default function Score() {
-  const [questionIdx] = useState(0);
-  const [res] = useState<ChatResponse[]>([]);
+interface Props {
+  res: ChatResponse[];
+  questionIdx: number;
+}
 
+export function Score({ res, questionIdx }: Props) {
   const result = res
     .map(({ EorI, SorN, TorF, JorP }) => {
       const ei = {
