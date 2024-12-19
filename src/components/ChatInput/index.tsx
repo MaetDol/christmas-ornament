@@ -1,17 +1,17 @@
-import AirplanSVG from '@/static/svg/solid-paper-airplane.svg';
-import Image from 'next/image';
-import { useState } from 'react';
+import AirplanSVG from "@/static/svg/solid-paper-airplane.svg";
+import Image from "next/image";
+import { useState } from "react";
 
 interface Props {
   onSubmit: (message: string) => void;
 }
 
 export function ChatInput({ onSubmit }: Props) {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
 
   const submit = () => {
     onSubmit(input);
-    setInput('');
+    setInput("");
   };
 
   return (
@@ -22,11 +22,17 @@ export function ChatInput({ onSubmit }: Props) {
           shadow-[inset_2px_-2px_4px_rgba(0,0,0,0.1)] 
           font-ownglyph h-fit text-slate-800
           "
-        style={{ resize: 'none' }}
+        style={{ resize: "none" }}
         rows={1}
         onChange={(e) => setInput(e.target.value)}
         value={input}
         placeholder="메시지를 입력하세요"
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            submit();
+          }
+        }}
       ></textarea>
 
       <button
