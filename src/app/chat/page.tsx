@@ -4,7 +4,7 @@ import { Chat } from "@/components/Chat";
 import { useConversation } from "@/components/Chat/hooks/useConversation";
 import { ChatInput } from "@/components/ChatInput";
 import BackgroundImage from "@/static/images/bg.jpg";
-import { mbtiScoreService } from "@/static/services/mbtiScoreService";
+import { mbtiScoreService } from "@/shared/services/mbtiScoreService";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -39,13 +39,13 @@ export default function Page() {
             disableInput || isEnd ? "translate-y-full" : "translate-y-0"
           }`}
         >
-          {!isEnd && <ChatInput onSubmit={submit} />}
+          <ChatInput onSubmit={submit} />
         </div>
 
         <div
           className={`
             absolute left-1/2 translate-x-[-50%] ease-out
-            transition-[top] ${isEnd ? "top-[82vh]" : "top-[100vh]"}
+            delay-1000 transition-[top] ${isEnd ? "top-[82vh]" : "top-[100vh]"}
             `}
         >
           {isEnd && (
