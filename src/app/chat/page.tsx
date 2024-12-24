@@ -14,6 +14,7 @@ export default function Page() {
 
   const chatRef = useRef<{ scrollToBottom: () => void }>(null);
   useEffect(() => {
+    if (conversation.length < 2) return;
     chatRef.current?.scrollToBottom();
   }, [conversation]);
 
