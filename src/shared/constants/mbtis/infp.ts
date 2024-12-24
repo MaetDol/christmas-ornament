@@ -27,9 +27,9 @@ export const INFP = {
     {
       mbti: "INFJ",
       image: MBTIImages.INFJ,
-      description: `‘너의 마음을 알아..!’
+      description: `‘너의 마음을 알아’
               나만의 비밀을 간직한 친구!
-              믿음직한 조언자.`,
+              믿음직한 산타.`,
     },
     {
       mbti: "ENFP",
