@@ -29,4 +29,8 @@ body {
   .shadow-drop-1 {
     box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.1);
   }
+
+  .shadow-on-image-1 {
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.25));
+  }
 }
