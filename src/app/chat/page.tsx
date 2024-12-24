@@ -45,7 +45,7 @@ export default function Page() {
         <div
           className={`
             absolute left-1/2 translate-x-[-50%] ease-out
-            delay-1000 transition-[top] ${isEnd ? "top-[82vh]" : "top-[100vh]"}
+            delay-1000 transition-[top] ${isEnd ? "top-[82vh]" : "top-[105vh]"}
             `}
         >
           {isEnd && (

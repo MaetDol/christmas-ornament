@@ -14,7 +14,10 @@ export const Chat = forwardRef<{ scrollToBottom: () => void }, Props>(
       ref,
       () => ({
         scrollToBottom: () => {
-          bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+          bottomRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "end",
+          });
         },
       }),
       []
