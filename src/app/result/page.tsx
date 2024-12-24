@@ -1,15 +1,25 @@
+"use client";
+
 import Image from "next/image";
 import INFP from "@/static/images/infp_giftbox.png";
 import tree from "@/static/images/tree.png";
+import { useSearchParams } from "next/navigation";
+import { MBTIS } from "@/shared/constants/mbtis";
 
 export default function Page() {
+  const param = useSearchParams();
+  const mbtiRaw = param.get("mbti")?.toUpperCase();
+  if (!mbtiRaw) return null;
+  if (!isValidMBTI(mbtiRaw)) return null;
+
+  const mbti = MBTIS[mbtiRaw];
+
   return (
     <main className="h-full bg-slate-50 px-6 pt-6 overflow-auto">
       <h1 className="font-ownglyph text-[18px] text-slate-500 mb-[88px]">
         마치 당신은..
         <span className="whitespace-pre-line mt-2 block text-center text-[30px] text-slate-800 leading-none">
-          {`따뜻한 마음이
-          한가득 담긴 선물상자!`}
+          {mbti.title}
         </span>
       </h1>
 
@@ -19,24 +29,21 @@ export default function Page() {
       "
       >
         <Image
-          src={INFP}
+          src={mbti.image}
           width={160}
           height={160}
-          alt="INFP"
+          alt={mbtiRaw}
           className="aspect-square w-[160px] h-[160px] mx-auto mt-[-64px] mb-6 shadow-on-image-1"
         />
 
-        <h2 className="mb-2 px-6">이 작은 선물상자는요..</h2>
+        <h2 className="mb-2 px-6">{mbti.description.title}</h2>
         <ul className="text-[18px] text-slate-500 leading-none flex flex-col gap-1 mb-12 px-6">
-          <li className="flex gap-2 ">
-            <span className="inline-block w-[6px] h-[6px] bg-slate-500 rounded-full shrink-0 mt-2" />
-            상상력으로 가득한 선물상자를 열어보는 상대가 감동했으면 하는 마음이
-            한가득!
-          </li>
-          <li>
-            매년 있는 크리스마스지만, 대충하는 선물은 노노! 본인만의 의미를
-            담아요.
-          </li>
+          {mbti.description.content.map((info, index) => (
+            <li className="flex gap-2" key={index}>
+              <span className="inline-block w-[6px] h-[6px] bg-slate-500 rounded-full shrink-0 mt-2" />
+              {info}
+            </li>
+          ))}
         </ul>
 
         <h2 className="whitespace-pre-line leading-none px-6">
@@ -48,7 +55,7 @@ export default function Page() {
             src={tree}
             width={0}
             height={592}
-            alt="tree"
+            alt="tree bg"
             className="aspect-square h-[592px] w-full object-cover object-bottom opacity-50"
           />
           <ul
@@ -56,53 +63,47 @@ export default function Page() {
           font-ownglyph text-[18px] text-slate-800 leading-none px-4 whitespace-pre-line gap-2
           "
           >
-            <li className="flex items-center">
-              <Image
-                src={INFP}
-                width={120}
-                height={120}
-                alt="INFP"
-                className="aspect-square w-[120px] h-[120px] shadow-on-image-1"
-              />
-              {`‘네가 옳단다..!’ 
-              나 부둥부둥 전문가! 
-              적극적인 지지자.`}
-            </li>
-            <li className="flex items-center text-right">
-              ‘네가 옳단다..!’ 나 부둥부둥 전문가! 적극적인 지지자.
-              <Image
-                src={INFP}
-                width={120}
-                height={120}
-                alt="INFP"
-                className="aspect-square w-[120px] h-[120px] shadow-on-image-1"
-              />
-            </li>
+            {mbti.friends.map((friend, index) => (
+              <li
+                className={`flex items-center ${
+                  index % 2 === 0 ? "" : "text-right"
+                }`}
+                key={index}
+              >
+                {index % 2 === 0 && (
+                  <>
+                    <Image
+                      src={friend.image}
+                      width={120}
+                      height={120}
+                      alt={friend.mbti}
+                      className="aspect-square w-[120px] h-[120px] shadow-on-image-1"
+                    />
+                    {friend.description}
+                  </>
+                )}
 
-            <li className="flex items-center">
-              <Image
-                src={INFP}
-                width={120}
-                height={120}
-                alt="INFP"
-                className="aspect-square w-[120px] h-[120px]"
-              />
-              <span>‘네가 옳단다..!’ 나 부둥부둥 전문가! 적극적인 지지자.</span>
-            </li>
-
-            <li className="flex items-center text-right">
-              <span>‘네가 옳단다..!’ 나 부둥부둥 전문가! 적극적인 지지자.</span>
-              <Image
-                src={INFP}
-                width={120}
-                height={120}
-                alt="INFP"
-                className="aspect-square w-[120px] h-[120px]"
-              />
-            </li>
+                {index % 2 !== 0 && (
+                  <>
+                    {friend.description}
+                    <Image
+                      src={friend.image}
+                      width={120}
+                      height={120}
+                      alt={friend.mbti}
+                      className="aspect-square w-[120px] h-[120px] shadow-on-image-1"
+                    />
+                  </>
+                )}
+              </li>
+            ))}
           </ul>
         </div>
       </section>
     </main>
   );
+}
+
+function isValidMBTI(mbti: string): mbti is keyof typeof MBTIS {
+  return mbti in MBTIS;
 }
