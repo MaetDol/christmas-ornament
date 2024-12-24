@@ -21,7 +21,7 @@ export const Chat = forwardRef<{ scrollToBottom: () => void }, Props>(
     );
 
     return (
-      <div className="flex-1 overflow-auto py-12 px-4">
+      <div className="flex-1 overflow-auto py-12 px-4 pb-[20vh]">
         <ol className="font-ownglyph flex flex-col gap-4">
           {messages.map(({ role, content }, index) =>
             role === "user" ? (
