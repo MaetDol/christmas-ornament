@@ -4,6 +4,7 @@ import { ENTJ } from "@/shared/constants/mbtis/ENTJ";
 import { ENTP } from "@/shared/constants/mbtis/entp";
 import { ESFJ } from "@/shared/constants/mbtis/esfj";
 import { ESFP } from "@/shared/constants/mbtis/esfp";
+import { ESTJ } from "@/shared/constants/mbtis/estj";
 import { ESTP } from "@/shared/constants/mbtis/estp";
 import { INFJ } from "@/shared/constants/mbtis/infj";
 import { INFP } from "@/shared/constants/mbtis/infp";
@@ -30,4 +31,5 @@ export const MBTIS = {
   ENTP,
   ENTJ,
   ESTP,
+  ESTJ,
 };
