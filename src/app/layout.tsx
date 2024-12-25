@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { MBTIImages } from "@/shared/constants/mbtis/images";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,6 +40,8 @@ export default function RootLayout({
         <div className="max-w-[480px] relative h-full m-auto shadow-drop-1">
           {children}
         </div>
+
+        <GoogleAnalytics />
       </body>
     </html>
   );
