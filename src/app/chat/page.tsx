@@ -7,7 +7,6 @@ import BackgroundImage from "@/static/images/bg.jpg";
 import { mbtiScoreService } from "@/shared/services/mbtiScoreService";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
 
 export default function Page() {
