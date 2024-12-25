@@ -4,6 +4,7 @@ import { INTJ } from "@/shared/constants/mbtis/intj";
 import { INTP } from "@/shared/constants/mbtis/intp";
 import { ISFJ } from "@/shared/constants/mbtis/isfj";
 import { ISFP } from "@/shared/constants/mbtis/isfp";
+import { ISTP } from "@/shared/constants/mbtis/istp";
 
 export const MBTIS = {
   INFP,
@@ -12,4 +13,5 @@ export const MBTIS = {
   ISFJ,
   INTP,
   INTJ,
+  ISTP,
 };
