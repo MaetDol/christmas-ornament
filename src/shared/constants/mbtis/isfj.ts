@@ -19,13 +19,18 @@ export const ISFJ = {
     {
       mbti: "ESFJ",
       image: MBTIImages.ESFJ,
-      description: `천사장식은 진저브레드의 이런 섬세한 마음을 잘 이해하고, 칭찬해줄거에요.`,
+      description: `천사장식은
+      진저브레드의 이런 섬세한 마음을
+       잘 이해하고, 칭찬해줄거에요.`,
     },
     {
       mbti: "ISFP",
       image: MBTIImages.ISFP,
-      description: `딱딱한 진저브레드에게 새로운 영감을 불어넣어주는 캔디케인!
-캔디케인의 즉흥적인 느낌과 진저브레드의 안정적인 느낌이 어우러질거에요.`,
+      description: `딱딱한 진저브레드에게
+       새로운 영감을 불어넣어주는 캔디케인!
+캔디케인의 즉흥적인 느낌과 
+진저브레드의 안정적인 느낌이
+ 어우러질거에요.`,
     },
     {
       mbti: "ISTJ",

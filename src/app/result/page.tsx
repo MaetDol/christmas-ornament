@@ -64,7 +64,8 @@ export default async function Page({ searchParams }: Props) {
           />
           <ul
             className="absolute top-0 left-0 w-full h-full flex flex-col items-center pt-12
-          font-ownglyph text-[18px] text-slate-800 leading-none px-4 whitespace-pre-line gap-2
+          font-ownglyph text-[18px] text-slate-800 leading-none px-4 whitespace-pre-line gap-2 
+          break-keep
           "
           >
             {mbti.friends.map((friend, index) => (

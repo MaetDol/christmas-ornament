@@ -27,21 +27,25 @@ export const INTP = {
     {
       mbti: "ENTP",
       image: MBTIImages.ENTP,
-      description: `재치넘치고 활발한 징글 벨과 함께한다면,
+      description: `재치넘치고 활발한 
+      징글 벨과 함께한다면,
 새로운 에너지를 받을 수 있을거에요.
-하지만 지나치면, 눈송이가 싫어할 수 있어요.`,
+하지만 지나치면, 
+눈송이가 싫어할 수 있어요.`,
     },
     {
       mbti: "INTJ",
       image: MBTIImages.INTJ,
       description: `조용히 걸려있는 산타 양말처럼,
 서로 혼자만의 시간을 존중해줘요.
-또한 복잡한 문제를 함께 해결하며 친해지기 좋아요.`,
+또한 복잡한 문제를 
+함께 해결하며 친해지기 좋아요.`,
     },
     {
       mbti: "INFJ",
       image: MBTIImages.INFJ,
-      description: `차가운 눈송이도, 산타는 꼬옥 안아줄 수 있어요.
+      description: `차가운 눈송이도,
+      산타는 꼬옥 안아줄 수 있어요.
 이런 저런 고민을 털어놓는 진중한 사이가 될 수도..?`,
     },
   ],

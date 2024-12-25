@@ -19,7 +19,8 @@ export const INTJ = {
     {
       mbti: "ENFP",
       image: MBTIImages.ENFP,
-      description: `반짝반짝 긍정적으로 빛나는 별 장식이, 딱딱한 양말의 분위기를 풀어줄 수 있을거에요.
+      description: `반짝반짝 긍정적으로 빛나는 별 장식이, 
+      딱딱한 양말의 분위기를 풀어줄 수 있을거에요.
 그치만.. 조금 눈부실지두..`,
     },
     {
