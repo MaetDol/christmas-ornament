@@ -6,6 +6,7 @@ export const GoogleAnalytics = () => {
     <>
       {/* <!-- Google tag (gtag.js) --> */}
       <Script
+        id="google-analytics"
         async
         src={`https://www.googletagmanager.com/gtag/js?id=${dotEnvService.getGA4StreamKey()}`}
       ></Script>
