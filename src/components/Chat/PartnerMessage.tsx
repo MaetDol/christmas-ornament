@@ -1,3 +1,6 @@
+import PROFILE from "@/static/images/profile.png";
+import Image from "next/image";
+
 interface Props {
   content: string[];
 }
@@ -5,7 +8,13 @@ interface Props {
 export function PartnerMessage({ content }: Props) {
   return (
     <li className="flex gap-2 break-words">
-      <div className="w-12 h-12 rounded-full shadow-drop-1 bg-slate-300 shrink-0"></div>
+      <Image
+        className="rounded-full shadow-drop-1 shrink-0 w-12 h-12"
+        src={PROFILE}
+        width={48}
+        height={48}
+        alt="profile"
+      />
       <ol className="text-[16px] text-slate-800 mt-1 flex flex-col gap-2 items-start">
         {content.map((message, index) => (
           <li
