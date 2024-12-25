@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import tree from "@/static/images/tree.png";
 import { MBTIS } from "@/shared/constants/mbtis";
