@@ -19,12 +19,15 @@ export const ISFP = {
     {
       mbti: "ESFP",
       image: MBTIImages.ESFP,
-      description: `사탕의 달달함에 맞춰 반짝이듯, 서로의 즉흥적인 흥에 잘 맞춰줘요.`,
+      description: `사탕의 달달함에 맞춰 반짝이듯, 
+      서로의 즉흥적인 흥에 잘 맞춰줘요.`,
     },
     {
       mbti: "ENFP",
       image: MBTIImages.ENFP,
-      description: `별의 반짝이는 호기심을 캔디케인이 놓칠리 없죠? 서로에게 영감을 주는 사이!`,
+      description: `별의 반짝이는 호기심을,
+      캔디케인이 놓칠리 없죠?
+      서로에게 영감을 주는 사이!`,
     },
     {
       mbti: "ISTJ",
@@ -35,7 +38,9 @@ export const ISFP = {
     {
       mbti: "INFP",
       image: MBTIImages.INFP,
-      description: `선물상자에 어떤걸 넣을까? 라고 묻는다면, 달콤한 캔디케인을!`,
+      description: `선물상자에 어떤걸 넣을까?
+      라고 묻는다면,
+      달콤한 캔디케인을!`,
     },
   ],
 } satisfies MBTI;
