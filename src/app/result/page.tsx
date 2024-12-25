@@ -130,7 +130,10 @@ export const generateMetadata = async ({
     openGraph: {
       type: "website",
       url: "https://christmas.mtdl.kr/result/?mbti=" + mbti,
-      title: MBTIS[mbti].title + " " + MBTIS[mbti].description.title,
+      title:
+        MBTIS[mbti].title.replace(/\n/g, " ") +
+        " " +
+        MBTIS[mbti].description.title,
       description: "이 오너먼트는 어떤 특징이 있을까요?",
       images: [
         {
