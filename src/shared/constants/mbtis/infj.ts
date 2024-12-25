@@ -1,6 +1,5 @@
 import { MBTIImages } from "@/shared/constants/mbtis/images";
 import { MBTI } from "@/shared/types/mbti";
-import { describe } from "node:test";
 
 export const INFJ = {
   title: `주변 사람들에게

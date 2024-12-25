@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import INFP from "@/static/images/infp_giftbox.png";
 import tree from "@/static/images/tree.png";
 import { useSearchParams } from "next/navigation";
 import { MBTIS } from "@/shared/constants/mbtis";

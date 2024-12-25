@@ -39,3 +39,5 @@ export const Chat = forwardRef<{ scrollToBottom: () => void }, Props>(
     );
   }
 );
+
+Chat.displayName = "Chat";
