@@ -1,14 +1,15 @@
 import Image from "next/image";
 import tree from "@/static/images/tree.png";
 import { MBTIS } from "@/shared/constants/mbtis";
+import { Metadata } from "next";
 
-export default async function Page({
-  searchParams,
-}: {
+interface Props {
   searchParams: Promise<{
     [key: string]: string | string[] | undefined;
   }>;
-}) {
+}
+
+export default async function Page({ searchParams }: Props) {
   const param = await searchParams;
   const mbtiRaw = getSingleSearchParam(param["mbti"]).toUpperCase();
   if (!mbtiRaw) return null;
@@ -115,3 +116,27 @@ function getSingleSearchParam(params: string[] | string | undefined): string {
   if (params) return params;
   return "";
 }
+
+export const generateMetadata = async ({
+  searchParams,
+}: Props): Promise<Metadata> => {
+  const params = await searchParams;
+  const mbti = getSingleSearchParam(params["mbti"]);
+  if (!isValidMBTI(mbti)) {
+    return {};
+  }
+
+  return {
+    openGraph: {
+      type: "website",
+      url: "https://christmas.mtdl.kr",
+      images: [
+        {
+          url: MBTIS[mbti].image.src,
+          width: 320,
+          height: 320,
+        },
+      ],
+    },
+  };
+};
