@@ -10,7 +10,7 @@ export const GoogleAnalytics = () => {
         async
         src={`https://www.googletagmanager.com/gtag/js?id=${dotEnvService.getGA4StreamKey()}`}
       ></Script>
-      <Script>
+      <Script id="google-analytics-config">
         {`
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
