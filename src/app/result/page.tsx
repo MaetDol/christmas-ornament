@@ -2,12 +2,17 @@
 
 import Image from "next/image";
 import tree from "@/static/images/tree.png";
-import { useSearchParams } from "next/navigation";
 import { MBTIS } from "@/shared/constants/mbtis";
 
-export default function Page() {
-  const param = useSearchParams();
-  const mbtiRaw = param.get("mbti")?.toUpperCase();
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{
+    [key: string]: string | string[] | undefined;
+  }>;
+}) {
+  const param = await searchParams;
+  const mbtiRaw = getSingleSearchParam(param["mbti"]).toUpperCase();
   if (!mbtiRaw) return null;
   if (!isValidMBTI(mbtiRaw)) return null;
 
@@ -105,4 +110,10 @@ export default function Page() {
 
 function isValidMBTI(mbti: string): mbti is keyof typeof MBTIS {
   return mbti in MBTIS;
+}
+
+function getSingleSearchParam(params: string[] | string | undefined): string {
+  if (Array.isArray(params)) return params[0];
+  if (params) return params;
+  return "";
 }
