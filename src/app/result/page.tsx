@@ -121,7 +121,7 @@ export const generateMetadata = async ({
   searchParams,
 }: Props): Promise<Metadata> => {
   const params = await searchParams;
-  const mbti = getSingleSearchParam(params["mbti"]);
+  const mbti = getSingleSearchParam(params["mbti"]).toUpperCase();
   if (!isValidMBTI(mbti)) {
     return {};
   }
