@@ -1,6 +1,6 @@
 import { ENFJ } from "@/shared/constants/mbtis/enfj";
 import { ENFP } from "@/shared/constants/mbtis/enfp";
-import { ENTJ } from "@/shared/constants/mbtis/ENTJ";
+import { ENTJ } from "@/shared/constants/mbtis/entj";
 import { ENTP } from "@/shared/constants/mbtis/entp";
 import { ESFJ } from "@/shared/constants/mbtis/esfj";
 import { ESFP } from "@/shared/constants/mbtis/esfp";
