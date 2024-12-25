@@ -39,8 +39,8 @@ export default async function Page({ searchParams }: Props) {
           className="aspect-square w-[160px] h-[160px] mx-auto mt-[-64px] mb-6 shadow-on-image-1"
         />
 
-        <h2 className="mb-2 px-6">{mbti.description.title}</h2>
-        <ul className="text-[18px] text-slate-500 leading-none flex flex-col gap-1 mb-12 px-6">
+        <h2 className="mb-2 px-6 leading-none">{mbti.description.title}</h2>
+        <ul className="text-[18px] text-slate-500 leading-none flex flex-col gap-3 mb-12 px-6">
           {mbti.description.content.map((info, index) => (
             <li className="flex gap-2" key={index}>
               <span className="inline-block w-[6px] h-[6px] bg-slate-500 rounded-full shrink-0 mt-2" />
