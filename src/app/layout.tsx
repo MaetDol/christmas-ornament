@@ -46,6 +46,7 @@ export default function RootLayout({
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
+    metadataBase: new URL("https://christmas.mtdl.kr"),
     title: "Like Ornament",
     description: "나와 닮은 오너먼트는 무엇일까?",
     openGraph: {
