@@ -2,6 +2,7 @@ import Image from "next/image";
 import tree from "@/static/images/tree.png";
 import { MBTIS } from "@/shared/constants/mbtis";
 import { Metadata } from "next";
+import Link from "next/link";
 
 interface Props {
   searchParams: Promise<{
@@ -53,7 +54,7 @@ export default async function Page({ searchParams }: Props) {
           {`이런 저와 어울리는
           친구들은요..`}
         </h2>
-        <div className="relative">
+        <div className="relative border-b-[4px] border-slate-100">
           <Image
             src={tree}
             width={0}
@@ -102,6 +103,15 @@ export default async function Page({ searchParams }: Props) {
             ))}
           </ul>
         </div>
+
+        <footer className="text-center py-12 bg-slate-50">
+          <Link
+            className="p-3 bg-rose-800 text-white rounded-lg shadow-drop-1"
+            href="/"
+          >
+            오너먼트 확인하러 가기!
+          </Link>
+        </footer>
       </section>
     </main>
   );
