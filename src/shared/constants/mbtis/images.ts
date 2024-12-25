@@ -9,7 +9,7 @@ import entp from "@/static/images/entp_bell.png";
 import isfp from "@/static/images/isfp_candy-cane.png";
 import esfp from "@/static/images/esfp_fairy-lights.png";
 import istp from "@/static/images/istp_snowman.png";
-import estp from "@/static/images/estp_tree.png";
+import estp from "@/static/images/estp_sleigh.png";
 import isfj from "@/static/images/isfj_gingerbread.png";
 import esfj from "@/static/images/esfj_angel.png";
 import istj from "@/static/images/istj_ball-ornaments.png";
